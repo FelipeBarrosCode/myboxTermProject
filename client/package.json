@@ -2,8 +2,8 @@
   "name": "client",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel watch src/index.js src/style.css --dist-dir ../server/public"
+   "dev": "npx parcel watch src/index.js src/style.css --dist-dir ../server/public",
+    "start": "npx parcel build src/index.js src/style.css --dist-dir ../server/public"
   },
   "keywords": [],
   "author": "",

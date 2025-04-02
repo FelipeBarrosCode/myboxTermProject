@@ -11,7 +11,7 @@ const ImageGallery = (props) => {
 
   const fetchImages = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/files');
+      const response = await fetch('https://myboxtermproject.onrender.com/api/files');
       const data = await response.json();
 
       

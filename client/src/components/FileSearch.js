@@ -43,7 +43,7 @@ const FileSearch = (props) => {
     console.log("params", params);
 
     try {
-      const response = await fetch(`http://localhost:3000/api/files/search?${params.toString()}`, {
+      const response = await fetch(`https://myboxtermproject.onrender.com/api/files/search?${params.toString()}`, {
         method: 'GET'
       });
       
