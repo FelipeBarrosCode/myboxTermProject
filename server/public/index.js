@@ -18840,7 +18840,7 @@ const ImageGallery = (props)=>{
     }, []);
     const fetchImages = async ()=>{
         try {
-            const response = await fetch('http://localhost:3000/api/files');
+            const response = await fetch('/api/files');
             const data = await response.json();
             props.setMetadata(data.files);
         } catch (error) {
@@ -18963,7 +18963,7 @@ const DisplayFile = (props)=>{
         const params = new URLSearchParams(newFormData);
         console.log("params", params);
         try {
-            const response = await fetch(`http://localhost:3000/api/files/search?${params.toString()}`, {
+            const response = await fetch(`/api/files/search?${params.toString()}`, {
                 method: 'GET'
             });
             const data = await response.json();
@@ -18980,7 +18980,7 @@ const DisplayFile = (props)=>{
     const [state, formAction, isPending] = (0, _react.useActionState)(handleUpload, false);
     async function dowloadFile() {
         try {
-            const response = await fetch(`http://localhost:3000/api/files/download/${props.obj._id}`, {
+            const response = await fetch(`/api/files/download/${props.obj._id}`, {
                 method: 'GET'
             });
             const blob = await response.blob();
@@ -19203,7 +19203,7 @@ const ImageUpload = (props)=>{
         let holdDate = new Date();
         newFormData.append('uploadedAt', holdDate);
         try {
-            const response = await fetch('http://localhost:3000/api/files/upload', {
+            const response = await fetch('/api/files/upload', {
                 method: 'POST',
                 body: newFormData
             });
@@ -19501,7 +19501,7 @@ const FileSearch = (props)=>{
         const params = new URLSearchParams(newFormData);
         console.log("params", params);
         try {
-            const response = await fetch(`http://localhost:3000/api/files/search?${params.toString()}`, {
+            const response = await fetch(`/api/files/search?${params.toString()}`, {
                 method: 'GET'
             });
             const data = await response.json();
