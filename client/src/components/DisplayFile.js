@@ -65,7 +65,7 @@ const DisplayFile = (props) => {
 
   async function dowloadFile(){
     try {
-      const response = await fetch(`http://localhost:3000/api/files/download/${props.obj._id}`, {
+      const response = await fetch(`/api/files/download/${props.obj._id}`, {
         method: 'GET'
       });
       const blob = await response.blob();
