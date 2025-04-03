@@ -41,7 +41,7 @@ const DisplayFile = (props) => {
     console.log("params", params);
 
     try {
-      const response = await fetch(`http://localhost:3000/api/files/search?${params.toString()}`, {
+      const response = await fetch(`/api/files/search?${params.toString()}`, {
         method: 'GET'
       });
 

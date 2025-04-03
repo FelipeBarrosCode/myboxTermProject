@@ -150,13 +150,13 @@ router.get('/search', async (req, res) => {
       
       pipeline = [
         {
-          $match: { username:username } // Filter for the specific user if needed
+          $match: { username:username } 
         },
         
         {
           $lookup: {
             from: 'files',
-            localField: 'uploadedFiles.fileId', // The references to file documents
+            localField: 'uploadedFiles.fileId', 
             foreignField: '_id',
             as: 'filesInfo'
           }
