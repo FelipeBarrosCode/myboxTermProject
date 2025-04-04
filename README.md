@@ -50,13 +50,6 @@
 
 
 
-- **Response Format:** JSON object with the created user data.
-- **Example:**
-  ```bash
-  curl -X POST http://localhost:1234/api/users \
-       -H "Content-Type: application/json" \
-       -d '{"username": "exampleUser", "password": "securePassword"}'
-  ```
 
 #### GET /api/files
 - **Description:** Retrieves a list of uploaded files.
