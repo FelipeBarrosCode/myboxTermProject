@@ -18890,7 +18890,7 @@ const ImageGallery = (props)=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "image-grid",
-                children: props.metadata && props.metadata.map((obj, index)=>(console.log(obj), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: props.metadata && props.metadata.map((obj, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "image-card",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _displayFileDefault.default), {
                             obj: obj
@@ -18903,7 +18903,7 @@ const ImageGallery = (props)=>{
                         fileName: "src/components/ImageGallery.js",
                         lineNumber: 38,
                         columnNumber: 11
-                    }, undefined)))
+                    }, undefined))
             }, void 0, false, {
                 fileName: "src/components/ImageGallery.js",
                 lineNumber: 35,
