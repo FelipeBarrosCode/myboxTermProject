@@ -15,6 +15,8 @@ const FileSearch = (props) => {
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
 
+  const [uploadError, setUploadError] = useState('');
+
   
 
   
@@ -55,6 +57,7 @@ const FileSearch = (props) => {
         props.setMetadata(data.files);
         return true;
       }
+      setUploadError(data.error);
       return false;
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -116,6 +119,7 @@ const FileSearch = (props) => {
           <button type="submit" className="upload-submit-button" disabled={isPending}>
             {isPending ? 'Searching...' : 'Search'}
           </button>
+          {uploadError && <div className="error-message">{uploadError}</div>}
         </form>
       </div>
     </div>

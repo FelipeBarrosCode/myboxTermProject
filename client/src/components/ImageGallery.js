@@ -14,7 +14,7 @@ const ImageGallery = (props) => {
       const response = await fetch('/api/files');
       const data = await response.json();
 
-      
+    
       props.setMetadata(data.files);
     } catch (error) {
       console.error('Error fetching images:', error);
@@ -29,11 +29,12 @@ const ImageGallery = (props) => {
           Search Images
         </button>
         <button onClick={props.onUploadClick} className="upload-button">
-          Upload New Image
+          Upload New File
         </button>
       </div>
       <div className="image-grid">
         {props.metadata && props.metadata.map((obj, index) => (
+          
           <div key={index} className="image-card">
             <DisplayFile obj={obj}/>
            

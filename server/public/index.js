@@ -18876,7 +18876,7 @@ const ImageGallery = (props)=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         onClick: props.onUploadClick,
                         className: "upload-button",
-                        children: "Upload New Image"
+                        children: "Upload New File"
                     }, void 0, false, {
                         fileName: "src/components/ImageGallery.js",
                         lineNumber: 31,
@@ -18890,20 +18890,20 @@ const ImageGallery = (props)=>{
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "image-grid",
-                children: props.metadata && props.metadata.map((obj, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: props.metadata && props.metadata.map((obj, index)=>(console.log(obj), /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "image-card",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _displayFileDefault.default), {
                             obj: obj
                         }, void 0, false, {
                             fileName: "src/components/ImageGallery.js",
-                            lineNumber: 38,
+                            lineNumber: 39,
                             columnNumber: 13
                         }, undefined)
                     }, index, false, {
                         fileName: "src/components/ImageGallery.js",
-                        lineNumber: 37,
+                        lineNumber: 38,
                         columnNumber: 11
-                    }, undefined))
+                    }, undefined)))
             }, void 0, false, {
                 fileName: "src/components/ImageGallery.js",
                 lineNumber: 35,
@@ -18950,6 +18950,7 @@ const DisplayFile = (props)=>{
     const [file, setFile] = (0, _react.useState)(null);
     const [preview, setPreview] = (0, _react.useState)(null);
     const handleUpload = async (prevState, formData)=>{
+        console.log(props.obj);
         const userToSearch = formData.get('userToSearch');
         const title = formData.get('title');
         const description = formData.get('description');
@@ -18980,7 +18981,10 @@ const DisplayFile = (props)=>{
     const [state, formAction, isPending] = (0, _react.useActionState)(handleUpload, false);
     async function dowloadFile() {
         try {
-            const response = await fetch(`/api/files/download/${props.obj._id}`, {
+            console.log(props.obj);
+            const { _id } = props.obj;
+            console.log(_id);
+            const response = await fetch(`/api/files/download/${_id}`, {
                 method: 'GET'
             });
             const blob = await response.blob();
@@ -19009,7 +19013,7 @@ const DisplayFile = (props)=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/DisplayFile.js",
-                        lineNumber: 100,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -19019,7 +19023,7 @@ const DisplayFile = (props)=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/DisplayFile.js",
-                        lineNumber: 101,
+                        lineNumber: 106,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -19029,7 +19033,7 @@ const DisplayFile = (props)=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/DisplayFile.js",
-                        lineNumber: 102,
+                        lineNumber: 107,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -19039,7 +19043,7 @@ const DisplayFile = (props)=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/DisplayFile.js",
-                        lineNumber: 103,
+                        lineNumber: 108,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -19049,17 +19053,18 @@ const DisplayFile = (props)=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/DisplayFile.js",
-                        lineNumber: 104,
+                        lineNumber: 109,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
                             "File Size:",
-                            props.obj.fileSize
+                            props.obj.fileSize,
+                            " kb"
                         ]
                     }, void 0, true, {
                         fileName: "src/components/DisplayFile.js",
-                        lineNumber: 105,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -19069,17 +19074,16 @@ const DisplayFile = (props)=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/DisplayFile.js",
-                        lineNumber: 106,
+                        lineNumber: 111,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/DisplayFile.js",
-                lineNumber: 99,
+                lineNumber: 104,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                action: formAction,
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                     onClick: (e)=>{
                         e.preventDefault();
@@ -19088,18 +19092,18 @@ const DisplayFile = (props)=>{
                     children: "Dowload"
                 }, void 0, false, {
                     fileName: "src/components/DisplayFile.js",
-                    lineNumber: 109,
+                    lineNumber: 114,
                     columnNumber: 10
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/DisplayFile.js",
-                lineNumber: 108,
+                lineNumber: 113,
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/DisplayFile.js",
-        lineNumber: 97,
+        lineNumber: 102,
         columnNumber: 7
     }, undefined);
 };
@@ -19487,6 +19491,7 @@ const FileSearch = (props)=>{
     const [fileType, setFileType] = (0, _react.useState)('image');
     const [file, setFile] = (0, _react.useState)(null);
     const [preview, setPreview] = (0, _react.useState)(null);
+    const [uploadError, setUploadError] = (0, _react.useState)('');
     const handleUpload = async (prevState, formData)=>{
         const userToSearch = formData.get('userToSearch');
         const title = formData.get('title');
@@ -19511,6 +19516,7 @@ const FileSearch = (props)=>{
                 props.setMetadata(data.files);
                 return true;
             }
+            setUploadError(data.error);
             return false;
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -19529,14 +19535,14 @@ const FileSearch = (props)=>{
                     children: "\xd7"
                 }, void 0, false, {
                     fileName: "src/components/FileSearch.js",
-                    lineNumber: 70,
+                    lineNumber: 73,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
                     children: "Search New File"
                 }, void 0, false, {
                     fileName: "src/components/FileSearch.js",
-                    lineNumber: 71,
+                    lineNumber: 74,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -19550,7 +19556,7 @@ const FileSearch = (props)=>{
                                     children: "Title"
                                 }, void 0, false, {
                                     fileName: "src/components/FileSearch.js",
-                                    lineNumber: 74,
+                                    lineNumber: 77,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -19561,13 +19567,13 @@ const FileSearch = (props)=>{
                                     optional: true
                                 }, void 0, false, {
                                     fileName: "src/components/FileSearch.js",
-                                    lineNumber: 75,
+                                    lineNumber: 78,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/FileSearch.js",
-                            lineNumber: 73,
+                            lineNumber: 76,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19578,7 +19584,7 @@ const FileSearch = (props)=>{
                                     children: "User To Search"
                                 }, void 0, false, {
                                     fileName: "src/components/FileSearch.js",
-                                    lineNumber: 86,
+                                    lineNumber: 89,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -19590,13 +19596,13 @@ const FileSearch = (props)=>{
                                     onChange: (e)=>setUserSearch(e.target.value)
                                 }, void 0, false, {
                                     fileName: "src/components/FileSearch.js",
-                                    lineNumber: 87,
+                                    lineNumber: 90,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/FileSearch.js",
-                            lineNumber: 85,
+                            lineNumber: 88,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -19607,7 +19613,7 @@ const FileSearch = (props)=>{
                                     children: "File Type"
                                 }, void 0, false, {
                                     fileName: "src/components/FileSearch.js",
-                                    lineNumber: 99,
+                                    lineNumber: 102,
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -19621,18 +19627,18 @@ const FileSearch = (props)=>{
                                             children: type.label
                                         }, type.value, false, {
                                             fileName: "src/components/FileSearch.js",
-                                            lineNumber: 108,
+                                            lineNumber: 111,
                                             columnNumber: 17
                                         }, undefined))
                                 }, void 0, false, {
                                     fileName: "src/components/FileSearch.js",
-                                    lineNumber: 100,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/FileSearch.js",
-                            lineNumber: 98,
+                            lineNumber: 101,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -19642,28 +19648,36 @@ const FileSearch = (props)=>{
                             children: isPending ? 'Searching...' : 'Search'
                         }, void 0, false, {
                             fileName: "src/components/FileSearch.js",
-                            lineNumber: 116,
+                            lineNumber: 119,
                             columnNumber: 11
+                        }, undefined),
+                        uploadError && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "error-message",
+                            children: uploadError
+                        }, void 0, false, {
+                            fileName: "src/components/FileSearch.js",
+                            lineNumber: 122,
+                            columnNumber: 27
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/FileSearch.js",
-                    lineNumber: 72,
+                    lineNumber: 75,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/FileSearch.js",
-            lineNumber: 69,
+            lineNumber: 72,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/FileSearch.js",
-        lineNumber: 68,
+        lineNumber: 71,
         columnNumber: 5
     }, undefined);
 };
-_s(FileSearch, "kIKWiefg/B7UQBNYY8x/GZiDiv8=", false, function() {
+_s(FileSearch, "mfX+QjlnZnyd/GEk75AZTcOrtcs=", false, function() {
     return [
         (0, _react.useActionState)
     ];

@@ -18,6 +18,8 @@ const DisplayFile = (props) => {
 
   const handleUpload = async (prevState, formData) => {
     
+
+    console.log(props.obj)
    
     const userToSearch = formData.get('userToSearch');
     const title = formData.get('title');
@@ -65,7 +67,10 @@ const DisplayFile = (props) => {
 
   async function dowloadFile(){
     try {
-      const response = await fetch(`/api/files/download/${props.obj._id}`, {
+      console.log(props.obj)
+      const {_id} = props.obj;
+      console.log(_id)
+      const response = await fetch(`/api/files/download/${_id}`, {
         method: 'GET'
       });
       const blob = await response.blob();
@@ -102,10 +107,10 @@ const DisplayFile = (props) => {
         <p>File Type:{props.obj.fileType}</p>
         <p>Uploaded By:{props.obj.uploadedBy}</p>
         <p>Uploaded At:{props.obj.uploadedAt}</p>
-        <p>File Size:{props.obj.fileSize}</p>
+        <p>File Size:{props.obj.fileSize} kb</p>
         <p>Mime Type:{props.obj.mimeType}</p>
         </div>
-        <form action={formAction}>
+        <form > 
          <button onClick={(e)=>{
               e.preventDefault();
               dowloadFile();
